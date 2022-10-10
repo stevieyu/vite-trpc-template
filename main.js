@@ -2,7 +2,7 @@ import './style.css'
 import javascriptLogo from './javascript.svg'
 import { setupCounter } from './counter.js'
 
-import trpc from './trpc/client.js'
+import trpc from './trpc/client.ts'
 trpc()
 
 document.querySelector('#app').innerHTML = `
