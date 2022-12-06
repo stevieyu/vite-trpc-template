@@ -1,13 +1,11 @@
 import { App } from 'uWebSockets.js'
-const uwsApp = App();
+import expressify  from "uwebsockets-express"
+const app = expressify.default(App());
 
-////////////////////////////////////////////////////////////////
 
-import expressify from "uwebsockets-express"
 
-// @ts-ignore
-const app = expressify.default(uwsApp);
-// app.settings['x-powered-by'] = false;
+// import {Server} from 'hyper-express'
+// const app = new Server();
 
 ////////////////////////////////////////////
 
@@ -18,19 +16,19 @@ app.use('/api/trpc', trpc)
 
 const isProd = process.env.npm_lifecycle_event?.includes(':prod') || process.env.NODE_ENV === 'production'
 
-import { dirname } from 'path'
+import { resolve } from 'path'
 import { createServer as createViteServer } from 'vite'
 import serveStatic from 'serve-static'
 
-if(!isProd){
+if(isProd){
+    app.use(serveStatic(resolve('dist'), {
+        index: 'index.html'
+    }))
+}else{
     app.use((await createViteServer({
         server: {middlewareMode: true},
         appType: 'spa',
     })).middlewares);
-}else{
-    app.use(serveStatic(dirname('dist'), {
-        index: 'index.html'
-    }))
 }
 
 /////////////////////////////////////////////////////////////////////////////////////
