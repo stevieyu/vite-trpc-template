@@ -25,10 +25,11 @@ if(isProd){
         index: 'index.html'
     }))
 }else{
-    app.use((await createViteServer({
+    const vite = await createViteServer({
         server: {middlewareMode: true},
         appType: 'spa',
-    })).middlewares);
+    });
+    app.use(vite.middlewares);
 }
 
 /////////////////////////////////////////////////////////////////////////////////////
