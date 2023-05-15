@@ -1,5 +1,5 @@
 {
   "rewrites": [
-    { "source": "/trpc/(.*)", "destination": "/api/index.js" }
+    { "source": "/trpc/(.*)", "destination": "/api/fetchRequest.js" }
   ]
 }
