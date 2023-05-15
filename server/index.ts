@@ -1,4 +1,4 @@
-import { createHTTPHandler } from '@trpc/server/adapters/standalone';
+
 // import { db } from './db';
 import { publicProcedure, router } from './trpc';
 
@@ -13,13 +13,13 @@ const appRouter = router({
 });
 export type AppRouter = typeof appRouter;
 
-const createContext = ({req, res}: {req:any, res:any}) => {
-    return {
-        me: null,
-    }
-};
+// const createContext = ({req, res}: {req:any, res:any}) => {
+//     return {
+//         me: null,
+//     }
+// };
 
-export default createHTTPHandler({
+export default {
     router: appRouter,
-    createContext,
-})
+    // createContext,
+}
