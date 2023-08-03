@@ -1,12 +1,13 @@
+import type {Plugin} from 'vite'
 import { createHTTPHandler } from '@trpc/server/adapters/standalone';
-import trpcServer from "./index";
+import options from "./options";
 
-export default () => ({
+export default (): Plugin => ({
     name: 'trpc-server',
-    configureServer(server: any) {
-        server.middlewares.use('/trpc', createHTTPHandler(trpcServer))
+    configureServer(server) {
+        server.middlewares.use('/trpc', createHTTPHandler(options))
     },
-    configurePreviewServer(server: any) {
-        server.middlewares.use('/trpc', createHTTPHandler(trpcServer))
+    configurePreviewServer(server) {
+        server.middlewares.use('/trpc', createHTTPHandler(options))
     }
 })

@@ -21,13 +21,13 @@ const appRouter = router({
 });
 export type AppRouter = typeof appRouter;
 
-// const createContext = ({req, res}: {req:any, res:any}) => {
-//     return {
-//         me: null,
-//     }
-// };
+const context = ({req, res}: {req:any, res:any}) => {
+    return {
+        me: null,
+    }
+};
 
 export default {
     router: appRouter,
-    // createContext,
+    createContext: context
 }

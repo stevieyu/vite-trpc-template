@@ -9,7 +9,8 @@
   "dependencies": {
     "vue": "^3.3.4",
     "superjson": "latest",
-    "devalue": "latest"
+    "devalue": "latest",
+    "drizzle-orm": "^0.27"
   },
   "devDependencies": {
     "@trpc/client": "^10.36.0",
