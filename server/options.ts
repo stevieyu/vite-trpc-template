@@ -1,7 +1,8 @@
 
 // import { db } from './db';
 import { publicProcedure, router } from './trpc';
-import {object, string, optional,array, union, number, any, date} from 'valibot'
+import {object, string, optional,array, union, number, date} from 'valibot'
+// import type {NodeHTTPCreateContextFn, NodeHTTPRequest, NodeHTTPResponse} from "@trpc/server/dist/adapters/node-http";
 
 const appRouter = router({
     users: publicProcedure
@@ -21,13 +22,15 @@ const appRouter = router({
 });
 export type AppRouter = typeof appRouter;
 
-const context = ({req, res}: {req:any, res:any}) => {
-    return {
-        me: null,
-    }
-};
+// type CreateContextFn = NodeHTTPCreateContextFn<AppRouter, NodeHTTPRequest, NodeHTTPResponse>
+// const context: CreateContextFn = ({req}) => {
+//     console.log(req)
+//     return {
+//         me: null,
+//     }
+// };
 
 export default {
     router: appRouter,
-    createContext: context
+    // createContext: context
 }
