@@ -8,9 +8,6 @@ export default (): Plugin => ({
         server.middlewares.use('/trpc', createHTTPHandler(options))
     },
     configurePreviewServer(server) {
-        server.middlewares.use('/trpc', createHTTPHandler({
-            createContext: () => ({}),
-            ...options
-        }))
+        server.middlewares.use('/trpc', createHTTPHandler(options))
     }
 })
