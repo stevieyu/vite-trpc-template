@@ -6,7 +6,7 @@ import transformer from './utils/transformer';
  * Should be done only once per backend!
  */
 const t = initTRPC.create({
-    transformer,
+  transformer,
 });
 
 /**
