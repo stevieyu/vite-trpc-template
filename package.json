@@ -8,7 +8,6 @@
   },
   "dependencies": {
     "devalue": "latest",
-    "msgpackr": "latest",
     "superjson": "latest",
     "vue": "^3.3.7"
   },
